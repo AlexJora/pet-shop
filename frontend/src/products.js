@@ -66,7 +66,7 @@ const products = [
   },
   {
     _id: '6',
-    name: 'Hill adult mature mediul',
+    name: 'Hill adult mature medium size',
     image: '/images/product6.jpg',
     description:
       'Hill Science Plan Canine Mature Adult 7+ Active Longevity Medium with Chicken is formulated to sustain mobility and healthy vital organs. With clinically proven antioxidants, and glucosamine and chondroitin from natural sources.',
@@ -79,7 +79,7 @@ const products = [
   },
   {
     _id: '7',
-    name: 'Hill adult Large Breed With Chicken Dog Food',
+    name: 'Hill adult Large Breed',
     image: '/images/product7.jpg',
     description:
       'Hill Science Plan Canine Mature Adult 7+ Active Longevity Medium with Chicken is formulated to sustain mobility and healthy vital organs. With clinically proven antioxidants, and glucosamine and chondroitin from natural sources.',
@@ -92,7 +92,7 @@ const products = [
   },
   {
     _id: '8',
-    name: 'Pedigree Adult Dog Dry Food for Medium Breed Size Dogs with Chicken',
+    name: 'Pedigree Adult for Medium Breed Size Dogs',
     image: '/images/product8.jpg',
     description:
       'Why Pedigree Dry Adult Food?At Pedigree we believe that every dog deserves a loving home, and that every dog deserves leading nutrition. From over 40 years experience of developing Pedigree recipes, we believe that dogs have four universal needs: Skin & Coat, Immunity, Digestion and Oral Care. That is why Pedigree Vital Protection has been designed to deliver nutrition that addresses these four needs: the product helps support a strong immune system, a healthy skin and coat, and good Digestion as well as helping to clean the dog teeth.',
