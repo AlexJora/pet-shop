@@ -1,7 +1,7 @@
 const products = [
   {
     _id: "1",
-    name: "ROYAL CANIN® Kitten ",
+    name: "Royal Canin Kitten ",
     image: "/images/product1.jpg",
     description:
       "Royal Canin Kitten Dry Food gives your kitten a healthy start with nutritional precision: An innovative mix of highly digestible proteins, vitamins, and other essential minerals support their maturing digestive system and keeps their growing bodies strong.",
@@ -14,7 +14,7 @@ const products = [
   },
   {
     _id: "2",
-    name: "KIT CAT DRY ADULT CAT FOOD CLASSIC 32",
+    name: "Kit cat adult",
     image: "/images/product2.jpg",
     description:
       "Treat your cat to a premium cat diet created by nutritionists (who are cat lovers) to provide your kitty cat with a meal made with carefully selected ingredients loaded with benefits.This premium meal is packed with beneficial ingredients to reduce digestive and hairball issues; and promote skin, coat, eye and heart health too.",
@@ -40,7 +40,7 @@ const products = [
   },
   {
     _id: "4",
-    name: "Friskies Dry Cat Food",
+    name: "Friskies adult",
     image: "/images/product4.jpg",
     description:
       "Get your cat purring at mealtime with the tempting texture combination found in Purina Friskies Tender and Crunchy Combo dry adult cat food. Meaty tenders and crunchy bits give her more to love in every bite, and the pleasing shapes get her excited to nibble her way to a happy belly. ",
@@ -66,7 +66,7 @@ const products = [
   },
   {
     _id: "6",
-    name: "Hill adult mature medium size",
+    name: "Hill adult",
     image: "/images/product6.jpg",
     description:
       "Hill Science Plan Canine Mature Adult 7+ Active Longevity Medium with Chicken is formulated to sustain mobility and healthy vital organs. With clinically proven antioxidants, and glucosamine and chondroitin from natural sources.",
@@ -92,7 +92,7 @@ const products = [
   },
   {
     _id: "8",
-    name: "Pedigree Adult for Medium Breed Size Dogs",
+    name: "Pedigree Adult",
     image: "/images/product8.jpg",
     description:
       "Why Pedigree Dry Adult Food?At Pedigree we believe that every dog deserves a loving home, and that every dog deserves leading nutrition. From over 40 years experience of developing Pedigree recipes, we believe that dogs have four universal needs: Skin & Coat, Immunity, Digestion and Oral Care. That is why Pedigree Vital Protection has been designed to deliver nutrition that addresses these four needs: the product helps support a strong immune system, a healthy skin and coat, and good Digestion as well as helping to clean the dog teeth.",

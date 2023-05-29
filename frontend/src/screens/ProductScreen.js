@@ -11,7 +11,7 @@ import {
   Button,
   ListGroupItem,
 } from "react-bootstrap";
-// import products from "../products";
+
 import Rating from "../components/Rating";
 
 const ProductScreen = () => {
@@ -24,8 +24,6 @@ const ProductScreen = () => {
     };
     fetchProduct();
   }, [productId]);
-  // const params = useParams();
-  // const product = products.find((p) => p._id === params.id);
 
   return (
     <>
