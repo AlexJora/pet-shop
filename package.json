@@ -1,0 +1,15 @@
+{
+  "name": "pet-shop",
+  "version": "1.0.0",
+  "description": "eCommerce application build with MERN stack",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "AlexJora",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
