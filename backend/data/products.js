@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Royal Canin Kitten ",
     image: "/images/product1.jpg",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "2",
     name: "Kit cat adult",
     image: "/images/product2.jpg",
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: "3",
     name: "Grain Zero Signature ",
     image: "/images/product3.jpg",
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "4",
     name: "Friskies adult",
     image: "/images/product4.jpg",
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "5",
     name: "Optimizor Premium",
     image: "/images/product5.png",
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: "6",
     name: "Hill adult",
     image: "/images/product6.jpg",
     description:
@@ -78,7 +72,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "7",
     name: "Hill adult Large Breed",
     image: "/images/product7.jpg",
     description:
@@ -91,7 +84,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "8",
     name: "Pedigree Adult",
     image: "/images/product8.jpg",
     description:
