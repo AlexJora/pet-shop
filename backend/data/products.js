@@ -16,7 +16,7 @@ const products = [
     image: "/images/product2.jpg",
     description:
       "Treat your cat to a premium cat diet created by nutritionists (who are cat lovers) to provide your kitty cat with a meal made with carefully selected ingredients loaded with benefits.This premium meal is packed with beneficial ingredients to reduce digestive and hairball issues; and promote skin, coat, eye and heart health too.",
-    brand: "",
+    brand: "Kit",
     category: "dry cat food",
     price: 250,
     countInStock: 7,
