@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "../components/Loader";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -27,7 +28,7 @@ const ProductScreen = () => {
         Go Back
       </Link>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
         <div>{error?.data?.message || error.error}</div>
       ) : (
