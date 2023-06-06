@@ -22,7 +22,7 @@ const Header = () => {
                 <Nav.Link>
                   <i className="fas fa-shopping-cart px-1"></i>Cart
                   {cartItems.length > 0 && (
-                    <Badge pill bg="success" style={{ marginleft: "20px" }}>
+                    <Badge pill bg="success" style={{ marginLeft: "5px" }}>
                       {cartItems.reduce(
                         (accumulator, current) => accumulator + current.qty,
                         0
