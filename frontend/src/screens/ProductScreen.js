@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
@@ -11,12 +12,15 @@ import {
   Card,
   Button,
   ListGroupItem,
+  Form,
 } from "react-bootstrap";
 
 import Rating from "../components/Rating";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
+
+  const [qty, setQty] = useState(1);
   const {
     data: product,
     isLoading,
@@ -52,9 +56,9 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroupItem>
-                <ListGroupItem>Price: ${product.price}</ListGroupItem>
+                <ListGroupItem>Price: R{product.price}</ListGroupItem>
                 <ListGroupItem>
-                  Description: ${product.description}
+                  Description: {product.description}
                 </ListGroupItem>
               </ListGroup>
             </Col>
@@ -65,7 +69,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>R{product.price}</strong>
                       </Col>
                     </Row>
                   </ListGroupItem>
@@ -77,6 +81,28 @@ const ProductScreen = () => {
                       </Col>
                     </Row>
                   </ListGroupItem>
+                  {/* qty */}
+                  {product.countInStock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Qty</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            value={qty}
+                            onChange={(e) => setQty(Number(e.target.value))}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1}>{x + 1}</option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+                  {/*  end qty */}
                   <ListGroupItem>
                     <Button
                       className="btn-block"
