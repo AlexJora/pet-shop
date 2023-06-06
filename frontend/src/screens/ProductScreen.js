@@ -3,7 +3,9 @@ import { useState } from "react";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
 import {
   Row,
   Col,
@@ -18,15 +20,24 @@ import {
 import Rating from "../components/Rating";
 
 const ProductScreen = () => {
-  const { id: productId } = useParams();
-
   const [qty, setQty] = useState(1);
+  const { id: productId } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const {
     data: product,
     isLoading,
     error,
   } = useGetProductDetailsQuery(productId);
 
+  // addToCartHandler
+  const addToCartHandler = () => {
+    // dispatch action
+    dispatch(addToCart({ ...product, qty }));
+    // navigate to cart
+    navigate("/cart");
+  };
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
@@ -108,6 +119,7 @@ const ProductScreen = () => {
                       className="btn-block"
                       type="button"
                       disabled={product.countInStock === 0}
+                      onClick={addToCartHandler}
                     >
                       Add to card
                     </Button>
