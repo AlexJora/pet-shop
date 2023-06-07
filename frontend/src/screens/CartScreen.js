@@ -15,7 +15,7 @@ import {
 } from "react-bootstrap";
 
 const CartScreen = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -27,6 +27,10 @@ const CartScreen = () => {
   //remove
   const removeFromCartHandler = async (id) => {
     dispatch(removeFromCart(id));
+  };
+  //checkout
+  const checkoutHandler = () => {
+    navigate("/login?redirect=/shipping");
   };
   return (
     <Row>
@@ -95,6 +99,7 @@ const CartScreen = () => {
               type="button"
               className="btn-block"
               disabled={cartItems.length === 0}
+              onClick={checkoutHandler}
             >
               Proceed To Checkout
             </Button>
