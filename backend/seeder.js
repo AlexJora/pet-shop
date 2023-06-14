@@ -9,26 +9,26 @@ import Order from "./models/orderModel.js";
 import connectDB from "./config/db.js";
 
 dotenv.config();
+
 connectDB();
-//IMPORT
+
 const importData = async () => {
   try {
     await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
-    //user inserted
-    const createUsers = await User.insertMany(users);
-    //admin
-    const adminUser = createUsers[0]._id;
-    //var with all the products and admin
+
+    const createdUsers = await User.insertMany(users);
+
+    const adminUser = createdUsers[0]._id;
+
     const sampleProducts = products.map((product) => {
       return { ...product, user: adminUser };
     });
-    //insert all the products in DB
+
     await Product.insertMany(sampleProducts);
 
-    //color=green.inverse
-    console.log("Data imported!".green.inverse);
+    console.log("Data Imported!".green.inverse);
     process.exit();
   } catch (error) {
     console.error(`${error}`.red.inverse);
@@ -36,19 +36,19 @@ const importData = async () => {
   }
 };
 
-//DESTROY
 const destroyData = async () => {
   try {
     await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
+
+    console.log("Data Destroyed!".red.inverse);
+    process.exit();
   } catch (error) {
     console.error(`${error}`.red.inverse);
     process.exit(1);
   }
 };
-
-// console.log(process.argv[2]);
 
 if (process.argv[2] === "-d") {
   destroyData();
