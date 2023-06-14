@@ -32,5 +32,16 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+//hashing the password for registration
+userSchema.pre("save", async function (next) {
+  //if we're not dealing with the password, then it's just going to move on
+  if (!this.isModified("password")) {
+    next();
+  }
+  //if we are modifying the password
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
 const User = mongoose.model("User", userSchema);
 export default User;
