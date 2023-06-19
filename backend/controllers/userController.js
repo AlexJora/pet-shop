@@ -9,7 +9,7 @@ import generateToken from "../utils/generateToken.js";
 //@access Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
+  console.log("login");
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
@@ -68,6 +68,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //@route POST/api/users/logout
 //@access Private
 const logoutUser = asyncHandler(async (req, res) => {
+  console.log("logout");
   res.cookie("jwt", "", { httpOnly: true, expires: new Date(0) });
   res.status(200).json({ message: "Logged out successfully" });
 });
@@ -78,7 +79,6 @@ const logoutUser = asyncHandler(async (req, res) => {
 //@access Private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
-
   if (user) {
     res.json({
       _id: user._id,
