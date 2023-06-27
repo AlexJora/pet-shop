@@ -8,11 +8,20 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="light" expand="lg" collapseOnSelect>
+      <Navbar
+        style={{ backgroundColor: "#F4B07B" }}
+        expand="lg"
+        collapseOnSelect
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img src="logo3.png" alt="pet shop logo" />
+              <img
+                src="logo-pet.png"
+                alt="pet shop logo"
+                width={120}
+                height={60}
+              />
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -13,7 +13,7 @@ const App = () => {
     <Router>
       <Header />
 
-      <main className="py-4">
+      <main className="py-4" style={{ backgroundColor: "#FDF4EC" }}>
         <Container>
           <Routes>
             <Route path="/" element={<HomeScreen />} />
