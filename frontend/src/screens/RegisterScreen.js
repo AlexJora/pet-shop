@@ -18,22 +18,23 @@ import {
 import FormContainer from "../components/FormContainer";
 
 const RegisterScreen = () => {
+  // State variables to store user input
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  // Get access to the Redux dispatch function and the navigation function
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  // Use the useRegisterMutation hook to handle user registration
   const [register, { isLoading }] = useRegisterMutation();
   //useSelector to bring user info, witch is part of auth state
   const { userInfo } = useSelector((state) => state.auth);
-
+  // Get the redirect path from the URL, or default to "/"
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const redirect = sp.get("redirect") || "/";
-
+  // useEffect to automatically navigate to the redirect path if the user is already logged in
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -43,13 +44,17 @@ const RegisterScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
+      // Check if the entered password and confirmation password match
       toast.error("Password do not match");
       return;
     } else {
       try {
+        // Attempt to register the user using the register mutation and unwrap the response
         const res = await register({ name, email, password }).unwrap();
         console.log(res);
+        // Dispatch an action to set the user's credentials in the Redux store
         dispatch(setCredentials({ ...res }));
+        // Redirect the user to the specified redirect path
         navigate(redirect);
       } catch (err) {
         toast.error(err?.data?.message || err.error);

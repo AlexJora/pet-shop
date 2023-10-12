@@ -17,25 +17,26 @@ import {
 const CartScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  // Select the 'cart' state from Redux store
   const cart = useSelector((state) => state.cart);
+  // Destructure the 'cartItems' from 'cart' state
   const { cartItems } = cart;
-  //add
+  //===handler for adding items in cart
   const addToCartHandler = async (product, qty) => {
     dispatch(addToCart({ ...product, qty }));
   };
-  //remove
+  //===handler for removing items from cart
   const removeFromCartHandler = async (id) => {
     dispatch(removeFromCart(id));
   };
-  //checkout
+  //===checkout
   const checkoutHandler = () => {
     navigate("/login?redirect=/shipping");
   };
   return (
     <Row>
       <Col md={8}>
-        <h1 style={{ marginBottom: "20px" }}>Shopping Cart</h1>
+        <h2 style={{ marginBottom: "20px" }}>Shopping Cart</h2>
         {cartItems.length === 0 ? (
           <Message>
             Your Cart is empty <Link to="/">Go back</Link>
@@ -45,13 +46,13 @@ const CartScreen = () => {
             {cartItems.map((item) => (
               <ListGroup key={item._id}>
                 <Row>
-                  <Col md={2}>
+                  <Col md={3}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>R{item.price}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
@@ -82,14 +83,14 @@ const CartScreen = () => {
           </ListGroup>
         )}
       </Col>
-      <Col md={4}>
+      <Col md={4} className="py-5">
         <Card>
-          <ListGroup.Item variant="flash">
-            <h3>
+          <ListGroup.Item variant="flash" className="p-3">
+            <h6>
               Subtotal({cartItems.reduce((acc, item) => acc + item.qty, 0)})
               items
-            </h3>
-            $
+            </h6>
+            R
             {cartItems
               .reduce((acc, item) => acc + item.qty * item.price, 0)
               .toFixed(2)}

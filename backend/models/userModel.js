@@ -32,7 +32,7 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-//hashing the password for registration
+//hashing the password (encrypting) for registration/ pre--allows you to do something before it's saved in database
 userSchema.pre("save", async function (next) {
   //if we're not dealing with the password, then it's just going to move on
   if (!this.isModified("password")) {

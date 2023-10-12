@@ -21,7 +21,9 @@ import Rating from "../components/Rating";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
+  //we get the ID from the URL and
   const { id: productId } = useParams();
+  //we need dispatch because we can't call 'add to Cart' directly.
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,7 +35,7 @@ const ProductScreen = () => {
 
   // addToCartHandler
   const addToCartHandler = () => {
-    // dispatch action
+    // dispatch action (send the action)
     dispatch(addToCart({ ...product, qty }));
     // navigate to cart
     navigate("/cart");
@@ -53,10 +55,10 @@ const ProductScreen = () => {
       ) : (
         <>
           <Row>
-            <Col md={6}>
+            <Col md={4}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
-            <Col md={3}>
+            <Col md={4}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
@@ -73,7 +75,7 @@ const ProductScreen = () => {
                 </ListGroupItem>
               </ListGroup>
             </Col>
-            <Col md={3}>
+            <Col md={4}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroupItem>
@@ -103,9 +105,13 @@ const ProductScreen = () => {
                             value={qty}
                             onChange={(e) => setQty(Number(e.target.value))}
                           >
+                            {/* creating an array with the length of stock + the Keys method is 
+                            used to create an array of indexes. */}
                             {[...Array(product.countInStock).keys()].map(
                               (x) => (
-                                <option key={x + 1}>{x + 1}</option>
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
                               )
                             )}
                           </Form.Control>

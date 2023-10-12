@@ -10,9 +10,9 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   if (token) {
     try {
-      // Verify the token using the JWT_SECRET from environment variables
+      // Verify the JWT to get the user id
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      // Find the user associated with the decoded token
+      // Find the user associated with the decoded token and exclude the password field
       req.user = await User.findById(decoded.userId).select("-password");
       next();
     } catch (error) {

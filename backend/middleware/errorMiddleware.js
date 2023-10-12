@@ -1,3 +1,4 @@
+//handles cases where no route matches the requested URL, resulting in a "Not Found" response.
 const notFound = (req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
   res.status(404);

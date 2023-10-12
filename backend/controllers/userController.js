@@ -5,11 +5,13 @@ import generateToken from "../utils/generateToken.js";
 // && (await user.matchPassword(password))
 //1
 //@desc Auth user & get token
-//@route POST/api/login
+//@route POST/api/users/login
 //@access Public
 const authUser = asyncHandler(async (req, res) => {
+  //request body: email and password
   const { email, password } = req.body;
   console.log("login");
+  //we check if is the user with that email
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
@@ -46,10 +48,10 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
   });
-  //if we created the new user
+  // If the new user is successfully created, generate a JWT token and set it as an HTTP-only cookie
   if (user) {
-    generateToken(res, user_id);
-
+    generateToken(res, user._id);
+    // Send a 200 OK response with the user's information (excluding the password)
     res.status(200).json({
       _id: user._id,
       name: user.name,
@@ -99,15 +101,17 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
+    // Update user's name and email if provided in the request body; otherwise, keep the existing values
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-
+    // If a new password is provided in the request body, update the user's password
     if (req.body.password) {
       user.password = req.body.password;
     }
-
+    // Save the updated user object to the database
     const updatedUser = await user.save();
 
+    // Send a 200 OK response with the updated user's information (excluding the password)
     res.status(200).json({
       _id: updatedUser._id,
       name: updatedUser.name,
@@ -115,6 +119,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       isAdmin: updatedUser.isAdmin,
     });
   } else {
+    // If no user is found with the provided user ID, send a 404 Not Found response with an error message
     res.status(404);
     throw new Error("User not found");
   }
