@@ -11,6 +11,7 @@ const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
   //access the shippingAddress property from the cart state
   const { shippingAddress } = cart;
+  //first 2 lines must be before components state
   //components state
   const [address, setAddress] = useState(shippingAddress?.address || "");
   const [city, setCity] = useState(shippingAddress?.city || "");
@@ -23,6 +24,7 @@ const ShippingScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    //We call dispatch...call saveShippingAddress...pass in address/city...
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
