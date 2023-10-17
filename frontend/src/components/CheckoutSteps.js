@@ -1,15 +1,17 @@
 import React from "react";
-import { Nav, NavLink } from "react-bootstrap";
+import { Nav, NavLink, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
   return (
     <>
-      <Nav className="justify-content-center mb-4">
-        <Nav.Item>
+      <Nav>
+        <Nav.Item className="">
           {step1 ? (
             <LinkContainer to="login">
-              <NavLink>Sign In</NavLink>
+              <NavLink className="rounded-circle border text-xs">
+                Sign In
+              </NavLink>
             </LinkContainer>
           ) : (
             <NavLink disabled>Sign In</NavLink>
@@ -18,7 +20,9 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         <Nav.Item>
           {step2 ? (
             <LinkContainer to="/shipping">
-              <NavLink>Shipping</NavLink>
+              <NavLink className="rounded-circle border text-xs">
+                Shipping
+              </NavLink>
             </LinkContainer>
           ) : (
             <NavLink disabled>Shipping</NavLink>
@@ -27,7 +31,9 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         <Nav.Item>
           {step3 ? (
             <LinkContainer to="/payment">
-              <NavLink>Payment</NavLink>
+              <NavLink className="rounded-circle border text-xs">
+                Payment
+              </NavLink>
             </LinkContainer>
           ) : (
             <Nav.Link disabled>Payment</Nav.Link>
@@ -36,7 +42,9 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         <Nav.Item>
           {step4 ? (
             <LinkContainer to="/placeorder">
-              <NavLink>Place Order</NavLink>
+              <NavLink className="rounded-circle border text-xs">
+                Place Order
+              </NavLink>
             </LinkContainer>
           ) : (
             <Nav.Link disabled>Place Order</Nav.Link>

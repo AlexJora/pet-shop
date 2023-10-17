@@ -9,6 +9,7 @@ import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingScreen from "./screens/ShippingScreen";
+import PaymentScreen from "./screens/PaymentScreen";
 import PrivateRoute from "./components/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/register" element={<RegisterScreen />} />
 
             <Route path="" element={<PrivateRoute />}>
+              <Route path="/payment" element={<PaymentScreen />} />
               <Route path="/shipping" element={<ShippingScreen />} />
             </Route>
           </Routes>
