@@ -16,6 +16,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     shippingPrice,
     totalPrice,
   } = req.body;
+
   //if is an orderItems array and is empty
   if (orderItems && orderItems.length === 0) {
     res.status(400);
