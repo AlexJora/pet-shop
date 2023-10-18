@@ -6,7 +6,41 @@ import Order from "../models/orderModel.js";
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
-  res.send("new order created");
+  //we get all this from frontend
+  const {
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    itemsPrice,
+    taxPrice,
+    shippingPrice,
+    totalPrice,
+  } = req.body;
+  //if is an orderItems array and is empty
+  if (orderItems && orderItems.length === 0) {
+    res.status(400);
+    throw new Error("No order items");
+  } else {
+    //create new order and put in order variable (next we save order)
+    const order = new Order({
+      //in model we have and object id that isn't coming from frontend
+      orderItems: orderItems.map((x) => ({
+        ...x,
+        product: x._id,
+        _id: undefined,
+      })),
+      user: req.user_id,
+      shippingAddress,
+      paymentMethod,
+      itemsPrice,
+      taxPrice,
+      shippingPrice,
+      totalPrice,
+    });
+    //save order in createdOrder
+    const createdOrder = await order.save();
+    res.status(201).json(createdOrder);
+  }
 });
 
 //2.user===========================================================================================
