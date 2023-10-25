@@ -82,28 +82,22 @@ const PlaceOrderScreen = () => {
                 <Message>Your cart is empty</Message>
               ) : (
                 <ListGroupItem variant="flush">
-                  {/* {order.orderItems.map((item, index) => ( */}
                   {cart.cartItems.map((item, index) => (
-                    <ListGroupItem key={index}>
-                      <Row>
-                        <Col md={1}>
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            rounded
-                            fluid
-                          />
-                        </Col>
-                        <Col>
-                          <Link to={`/products/${item.product}`}>
-                            {item.name}
-                          </Link>
-                        </Col>
-                        <Col md={4}>
-                          {item.qty} x R{item.price} = R{item.qty * item.price}
-                        </Col>
-                      </Row>
-                    </ListGroupItem>
+                    // <ListGroupItem key={index}>
+                    <Row key={index}>
+                      <Col md={3}>
+                        <Image src={item.image} alt={item.name} rounded fluid />
+                      </Col>
+                      <Col>
+                        <Link to={`/products/${item.product}`}>
+                          {item.name}
+                        </Link>
+                      </Col>
+                      <Col md={4}>
+                        {item.qty} x R{item.price} = R{item.qty * item.price}
+                      </Col>
+                    </Row>
+                    // </ListGroupItem>
                   ))}
                 </ListGroupItem>
               )}
@@ -130,7 +124,7 @@ const PlaceOrderScreen = () => {
               </ListGroupItem>
               <ListGroupItem>
                 <Row>
-                  <Col>Tax:</Col>
+                  <Col>Tax(15%):</Col>
                   <Col>R{cart.taxPrice}</Col>
                 </Row>
               </ListGroupItem>
