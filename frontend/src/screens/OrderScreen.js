@@ -25,7 +25,7 @@ const OrderScreen = () => {
     isLoading,
     error,
   } = useGetOrderDetailsQuery(orderId);
-  console.log(order);
+  // console.log(order);
 
   return isLoading ? (
     <Loader />
@@ -33,7 +33,7 @@ const OrderScreen = () => {
     <Message variant="danger" />
   ) : (
     <>
-      <h3>Order {order._id}</h3>
+      <h3>ORDER {order._id}</h3>
       <Row>
         <Col md={8}>
           <ListGroup>
