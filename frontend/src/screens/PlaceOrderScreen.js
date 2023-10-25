@@ -44,6 +44,7 @@ const PlaceOrderScreen = () => {
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
       }).unwrap();
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
@@ -83,7 +84,6 @@ const PlaceOrderScreen = () => {
               ) : (
                 <ListGroupItem variant="flush">
                   {cart.cartItems.map((item, index) => (
-                    // <ListGroupItem key={index}>
                     <Row key={index}>
                       <Col md={3}>
                         <Image src={item.image} alt={item.name} rounded fluid />
@@ -97,7 +97,6 @@ const PlaceOrderScreen = () => {
                         {item.qty} x R{item.price} = R{item.qty * item.price}
                       </Col>
                     </Row>
-                    // </ListGroupItem>
                   ))}
                 </ListGroupItem>
               )}
@@ -124,7 +123,7 @@ const PlaceOrderScreen = () => {
               </ListGroupItem>
               <ListGroupItem>
                 <Row>
-                  <Col>Tax(15%):</Col>
+                  <Col>Tax (15%):</Col>
                   <Col>R{cart.taxPrice}</Col>
                 </Row>
               </ListGroupItem>
