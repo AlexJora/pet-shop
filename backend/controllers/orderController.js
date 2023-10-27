@@ -48,9 +48,11 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @desc    Get logged in user orders
 // @route   GET /api/orders/myorders
 // @access  Private
+//orders history on ProfileScreen
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id });
   res.status(200).json(orders);
+  console.log(orders);
 });
 
 //3.user===========================================================================================
