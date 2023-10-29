@@ -134,8 +134,6 @@ const ProfileScreen = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log("Orders:", orders)}
-
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
