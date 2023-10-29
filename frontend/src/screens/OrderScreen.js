@@ -174,7 +174,7 @@ const OrderScreen = () => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={4}>
+        <Col md={4} >
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>

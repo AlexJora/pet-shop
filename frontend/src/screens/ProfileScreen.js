@@ -55,7 +55,7 @@ const ProfileScreen = () => {
 
   return (
     <Row>
-      <Col md={3}>
+      <Col md={4}>
         <h3>User Profile</h3>
         <p>You can update your name, email or password</p>
 
@@ -108,7 +108,7 @@ const ProfileScreen = () => {
       </Col>
 
       {/* Get logged in user orders (getMyOrders from orderController.json) */}
-      <Col md={9}>
+      <Col md={8}>
         <h3>My Orders</h3>
         {isLoading ? (
           <Loader />
@@ -117,7 +117,12 @@ const ProfileScreen = () => {
             {error?.data?.message || error.error}
           </Message>
         ) : (
-          <Table striped hover responsive className="table-sm">
+          <Table
+            striped
+            hover
+            responsive
+            className="table table-dark table-striped"
+          >
             <thead>
               <tr>
                 <th>ID</th>
