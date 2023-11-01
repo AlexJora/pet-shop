@@ -29,9 +29,22 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       // Configure how long unused data for this query should be kept in the cache (5 seconds in this case)
       keepUnusedDataFor: 5,
     }),
+
+    //=====Create product
+    createProduct: builder.mutation({
+      query: () => ({
+        url: PRODUCTS_URL,
+        method: "POST",
+      }),
+      //will stop it from being cached so that we have fresh data. Without this we will need to click to reload the page to get the new data.
+      invalidatesTags: ["Product"],
+    }),
   }),
 });
 
 // Extract the generated hooks for the defined endpoints
-export const { useGetProductsQuery, useGetProductDetailsQuery } =
-  productsApiSlice;
+export const {
+  useGetProductsQuery,
+  useGetProductDetailsQuery,
+  useCreateProductMutation,
+} = productsApiSlice;

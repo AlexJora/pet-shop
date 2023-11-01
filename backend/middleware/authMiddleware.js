@@ -3,7 +3,7 @@ import asyncHandler from "./asyncHandler.js";
 import User from "../models/userModel.js";
 
 //1.Protect routes
-export const protect = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
   let token;
   //Read the JWT from the cookie by accessing req.cookies.jwt.
   token = req.cookies.jwt;
@@ -27,7 +27,7 @@ export const protect = asyncHandler(async (req, res, next) => {
 });
 
 //2.Admin middleware
-export const admin = (req, res, next) => {
+const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
   } else {
@@ -35,3 +35,5 @@ export const admin = (req, res, next) => {
     throw new Error("Not authorized as admin");
   }
 };
+
+export { protect, admin };

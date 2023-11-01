@@ -1,14 +1,16 @@
 import express from "express";
-// Create an instance of Express Router
+
 const router = express.Router();
-// import asyncHandler from "../middleware/asyncHandler.js";
-// import Product from "../models/productModel.js";
+
+import { protect, admin } from "../middleware/authMiddleware.js";
+
 import {
   getProducts,
   getProductById,
+  createProduct,
 } from "../controllers/productController.js";
 
-router.route("/").get(getProducts);
+router.route("/").get(getProducts).post(protect, admin, createProduct);
 router.route("/:id").get(getProductById);
 
 export default router;
