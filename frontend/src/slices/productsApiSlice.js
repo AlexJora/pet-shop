@@ -17,6 +17,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       // Configure how long unused data for this query should be kept in the cache (5 seconds in this case)
       keepUnusedDataFor: 5,
+      providesTags: ["Products"],
     }),
 
     // =====Define an endpoint to fetch details of a single product by its ID
@@ -28,6 +29,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       // Configure how long unused data for this query should be kept in the cache (5 seconds in this case)
       keepUnusedDataFor: 5,
+      invalidatesTags: ["Products"],
     }),
 
     //=====Create product
@@ -36,8 +38,18 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         url: PRODUCTS_URL,
         method: "POST",
       }),
-      //will stop it from being cached so that we have fresh data. Without this we will need to click to reload the page to get the new data.
+      //will stop it from being cached so that we have fresh data. Without this we will need to click to reload the page to get the new data. It's clearing cache.
       invalidatesTags: ["Product"],
+    }),
+
+    //=====Update/edit product
+    updateProduct: builder.mutation({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/${data.productId}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Products"],
     }),
   }),
 });
@@ -47,4 +59,5 @@ export const {
   useGetProductsQuery,
   useGetProductDetailsQuery,
   useCreateProductMutation,
+  useUpdateProductMutation,
 } = productsApiSlice;
