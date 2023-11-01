@@ -7,7 +7,7 @@ import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 
 const OrderListScreen = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
-
+  //console.log(orders);
   return (
     <>
       <h1>Orders</h1>
@@ -23,7 +23,7 @@ const OrderListScreen = () => {
           bordered
           hover
           responsive
-          className="table table-dark table-sm"
+          className="table table-primary table-sm"
         >
           <thead>
             <tr>
