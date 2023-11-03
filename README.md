@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is an eCommerce website built with the MERN stack.
+This project is an eCommerce website built with the MERN stack (MongoDB, Express.js, React.js, and Nodejs).
 
 ## Screenshots
 
