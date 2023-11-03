@@ -22,6 +22,7 @@ This project is an eCommerce website built with the MERN stack (MongoDB, Express
   - React
   - React Router Dom
   - Redux Toolkit
+  - React Bootstrap
 
 - **Backend:**
   - Node.js
