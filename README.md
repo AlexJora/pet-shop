@@ -6,7 +6,8 @@ This project is an eCommerce website built with the MERN stack (MongoDB, Express
 
 ## Screenshots
 
-<!-- Add screenshots here -->
+![img1](https://github.com/AlexJora/pet-shop/assets/102957717/a1caea75-ab6e-430d-a42d-312a6e2aecd5)
+
 
 ## Table of Contents
 
