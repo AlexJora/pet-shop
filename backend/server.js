@@ -41,6 +41,7 @@ app.get("/api/config/paypal", (req, res) =>
 //uploads folder we want to make static...to be able to access it
 const __dirname = path.resolve(); //set __dirname to current directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
 app.use(notFound);
 app.use(errorHandler);
 app.listen(port, () => console.log(`Server running on port ${port}`));
