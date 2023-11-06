@@ -128,11 +128,13 @@ const OrderScreen = () => {
             <ListGroup.Item>
               <h3>Shipping</h3>
               <p>
-                <strong>Name: </strong> {order.user.name}
+                <strong>Name: </strong> {order?.user?.name}
               </p>
               <p>
                 <strong>Email: </strong>{" "}
-                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+                {order?.user?.email && (
+                  <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+                )}
               </p>
               <p>
                 <strong>Address:</strong>
