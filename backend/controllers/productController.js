@@ -4,8 +4,14 @@ import Product from "../models/productModel.js";
 //@route GET/api/products
 //@access Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
-  res.json(products);
+  const pageSize = 2;
+  const page = Number(req.query.pageNumber) || 1;
+  const count = await Product.countDocuments(); //mangoose method
+
+  const products = await Product.find({})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 //@desc Fetch a product
@@ -82,7 +88,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews
 // @access  Private
@@ -98,7 +103,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error('Product already reviewed');
+      throw new Error("Product already reviewed");
     }
 
     const review = {
@@ -117,10 +122,10 @@ const createProductReview = asyncHandler(async (req, res) => {
       product.reviews.length;
 
     await product.save();
-    res.status(201).json({ message: 'Review added' });
+    res.status(201).json({ message: "Review added" });
   } else {
     res.status(404);
-    throw new Error('Product not found');
+    throw new Error("Product not found");
   }
 });
 

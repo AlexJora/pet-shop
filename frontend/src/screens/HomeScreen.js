@@ -1,11 +1,16 @@
 import React from "react";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
+import { useParams } from "react-router-dom"; //for pageNumber
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 const HomeScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  //we get pageNumber from url and we pass it in
+  const { pageNumber } = useParams();
+
+  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+
   return (
     <>
       {isLoading ? (
@@ -18,7 +23,7 @@ const HomeScreen = () => {
         <>
           <h3 className="py-3">Products:</h3>
           <Row>
-            {products.map((product) => (
+            {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                 <Product product={product} />
               </Col>

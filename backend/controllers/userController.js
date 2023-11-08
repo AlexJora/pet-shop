@@ -2,6 +2,7 @@ import { Error } from "mongoose";
 import asyncHandler from "../middleware/asyncHandler.js";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
+
 // && (await user.matchPassword(password))
 //1
 //@desc Auth user & get token
@@ -10,10 +11,15 @@ import generateToken from "../utils/generateToken.js";
 const authUser = asyncHandler(async (req, res) => {
   //request body: email and password
   const { email, password } = req.body;
-  console.log("login");
-  //we check if is the user with that email
+
+  //console.log("login");
+  //we check if is the user with that EMAIL
   const user = await User.findOne({ email });
 
+  //PASSWORD validation (comparing is in userModel.js)
+  //  ( userSchema.methods.matchPassword = async function (enteredPassword) {
+  //     return await bcrypt.compare(enteredPassword, this.password);
+  //   };)
   if (user && (await user.matchPassword(password))) {
     generateToken(res, user._id);
 
@@ -96,7 +102,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //5
 //@desc Update user profile
 //@route PUT/api/users/profile
-//@access Public
+//@access Private
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 

@@ -6,11 +6,13 @@ const generateToken = (res, userId) => {
   // The payload of the JWT includes the userId.
   // The process.env.JWT_SECRET is used as the secret key for signing the JWT.
   // It also sets an expiration time of 30 days for the token.
+  // 1 ==========
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
   // Set the JWT as an HTTP-only cookie in the response object (res).
   //jwt=cookie/token=the value that will be stored inside the "jwt" cookie
+  // 2 ==========
   res.cookie("jwt", token, {
     // Make the cookie HTTP-only, so it cannot be accessed or modified by JavaScript running in the browser.
     httpOnly: true,

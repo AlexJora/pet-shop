@@ -2,6 +2,9 @@
   "workbench.colorCustomizations": {
     "activityBar.background": "#eac272",
     "titleBar.activeBackground": "#eac272",
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": "#acbaac"
+  }
    
-}
 }
