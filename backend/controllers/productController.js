@@ -4,12 +4,16 @@ import Product from "../models/productModel.js";
 //@route GET/api/products
 //@access Public
 const getProducts = asyncHandler(async (req, res) => {
+  //how many products on page
   const pageSize = 2;
+  //page number that's in the URL.
   const page = Number(req.query.pageNumber) || 1;
+  //the total number of pages
   const count = await Product.countDocuments(); //mangoose method
 
   const products = await Product.find({})
     .limit(pageSize)
+    //if we are on page nr 2 we want to skip the products from page nr 1
     .skip(pageSize * (page - 1));
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
