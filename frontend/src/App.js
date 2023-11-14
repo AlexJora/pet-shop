@@ -36,7 +36,12 @@ const App = () => {
       <main className="py-4" style={{ backgroundColor: "#FDF4EC" }}>
         <Container>
           <Routes>
+            <Route path="/search/:keyword" element={<HomeScreen />} />
             <Route path="/page/:pageNumber" element={<HomeScreen />} />
+            <Route
+              path="/search/:keyword/page/:pageNumber"
+              element={<HomeScreen />}
+            />
             <Route path="/" element={<Navigate to="/page/1" />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/cart" element={<CartScreen />} />

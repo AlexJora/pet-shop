@@ -8,10 +8,15 @@ const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 2;
   //page number that's in the URL.
   const page = Number(req.query.pageNumber) || 1;
-  //the total number of pages
-  const count = await Product.countDocuments(); //mangoose method
 
-  const products = await Product.find({})
+  //SEARCH
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: "i" } }
+    : {};
+  //the total number of pages
+  const count = await Product.countDocuments({ ...keyword }); //mangoose method
+
+  const products = await Product.find({ ...keyword })
     .limit(pageSize)
     //if we are on page nr 2 we want to skip the products from page nr 1
     .skip(pageSize * (page - 1));
