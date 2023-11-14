@@ -6,6 +6,7 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
+
 const HomeScreen = () => {
   //we get pageNumber from url and we pass it in
   const { keyword, pageNumber } = useParams();

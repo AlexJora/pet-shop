@@ -5,6 +5,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
+import Search from "./Search";
+
 const Header = () => {
   //useSelector if you need to select something from the state.
   const { cartItems } = useSelector((state) => state.cart);
@@ -43,12 +45,13 @@ const Header = () => {
               />
             </Navbar.Brand>
           </LinkContainer>
-          <h6 className="center-text ps-5 fw-bold">
+          {/* <h6 className="center-text ps-5 fw-bold">
             FREE DELIVERY FOR ORDERS OVER R100!
-          </h6>
+          </h6> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <Search />
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart px-1"></i>Cart
