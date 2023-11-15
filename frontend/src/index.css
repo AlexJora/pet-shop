@@ -19,3 +19,20 @@ h3 {
   text-overflow: ellipsis; /* Add ellipsis for long text */
   white-space: nowrap; /* Prevent wrapping */
 }
+
+.carousel-caption {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.custom-carousel {
+  max-height: 400px;
+}
+
+.custom-carousel .carousel-img {
+  max-height: 300px;
+}

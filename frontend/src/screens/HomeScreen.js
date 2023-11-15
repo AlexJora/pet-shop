@@ -7,6 +7,7 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
+import CarouselProducts from "../components/CarouselProducts";
 
 const HomeScreen = () => {
   //we get pageNumber from url and we pass it in
@@ -19,7 +20,9 @@ const HomeScreen = () => {
 
   return (
     <>
-      {keyword && (
+      {!keyword ? (
+        <CarouselProducts />
+      ) : (
         <Link to="/" className="btn btn-light mb-4">
           Go Back
         </Link>
@@ -32,7 +35,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
-          <h3 className="py-3">Products:</h3>
+          {/* <h3 className="py-3">Products:</h3> */}
           <Row>
             {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
