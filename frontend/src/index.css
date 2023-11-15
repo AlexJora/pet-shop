@@ -1,6 +1,7 @@
 main {
   min-height: 80vh;
 }
+
 h3 {
   padding: 1rem 0;
 }
@@ -33,6 +34,14 @@ h3 {
   max-height: 400px;
 }
 
-.custom-carousel .carousel-img {
-  max-height: 300px;
+.carousel-img {
+  max-height: 350px;
+}
+.carousel-caption {
+  background-color: rgba(206, 108, 71, 0.7);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #ce6c47;
+  border-radius: 70%;
 }

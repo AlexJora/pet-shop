@@ -38,7 +38,7 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
-                src="logo-pet.png"
+                src="/logo-pet.png"
                 alt="pet shop logo"
                 width={100}
                 height={60}
