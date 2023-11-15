@@ -22,6 +22,7 @@ import {
 
 import Rating from "../components/Rating";
 import { toast } from "react-toastify";
+import Meta from "../components/Meta";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
@@ -86,6 +87,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={4}>
               <Image src={product.image} alt={product.name} fluid />
