@@ -21,10 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 //Cookie parser middleware
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("API is running....");
-});
-
 //path for product routes (in routes / + /:id)
 app.use("/api/products", productRoutes);
 //path for users routes (in routes / + /:id)
@@ -41,6 +37,22 @@ app.get("/api/config/paypal", (req, res) =>
 //uploads folder we want to make static...to be able to access it
 const __dirname = path.resolve(); //set __dirname to current directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+//======TEST
+//======if is in production
+if (process.env.NODE_ENV === "production") {
+  //set static folder - react build folder
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  //any route that is not api will be redirected to index.html (witch is in frontend, build)
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+  //======else if is not in production (we use react dev server)
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
